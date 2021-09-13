@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iBazar</title>
+    <link rel="stylesheet" href="./css/style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iBazar</title>
-  <link rel="stylesheet" href="./css/style.css" />
+    <!-- tailwind cdn link  -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- tailwind cdn link  -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet" />
+    <!-- daisy ui cdn link  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@1.14.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-  <!-- daisy ui cdn link  -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <!-- google Montserrat  font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <!-- google Montserrat  font  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-  <header class="mx-8">
-    <nav class="
+  <body>
+    <header class="mx-8">
+      <nav
+        class="
           navbar
           mb-2
           shadow-lg
@@ -33,86 +47,104 @@
           mx-auto
           rounded-box
           mt-4
-        ">
-      <div class="px-2 mx-2 navbar-start flex-grow">
-        <img src="https://o.remove.bg/downloads/f70fbba1-4bb7-4ae3-bd3a-6a40324ecc76/image-removebg-preview.png"
-          class="h-12" alt="i bazar" />
-      </div>
-      <div class="flex-grow lg:flex-none">
-        <div class="form-control w-72 mx-auto">
-          <div class="relative">
-            <input type="text" placeholder="Search" class="w-full pr-16 input input-primary input-bordered" />
-            <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" onclick="loadProducts()">
-              Search
-            </button>
+        "
+      >
+        <div class="px-2 mx-2 navbar-start flex-grow">
+          <h1 class="text-3xl font-semibold">
+            <span class="text-purple-300">i</span>
+            <span class="text-blue-400">B</span>
+            <span class="text-green-400">A</span>
+            <span class="text-yellow-400">Z</span>
+            <span class="text-red-400">A</span>
+            <span class="text-white">R</span>
+          </h1>
+        </div>
+        <div class="flex-grow lg:flex-none">
+          <div class="form-control w-72 mx-auto">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search"
+                class="w-full pr-16 input input-primary input-bordered"
+              />
+              <button
+                class="absolute top-0 right-0 rounded-l-none btn btn-primary"
+                onclick="loadProducts()"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- main body  -->
+    <main class="max-w-screen-2xl mx-auto px-12 my-12">
+      <!-- search input  -->
+
+      <!-- products area and my cart -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <!-- products  -->
+        <div class="col-span-3">
+          <div
+            id="all-products"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          ></div>
+        </div>
+
+        <!-- cart  -->
+        <div class="col-span-1">
+          <div class="cart" id="my-cart">
+            <table class="table">
+              <thead>
+                <h1 class="text-lg text-center font-semibold py-3">My-Cart</h1>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Total Added-Products:</th>
+                  <td><span id="total-Products">0</span></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Price:</th>
+                  <td>$ <span id="price">00.00</span></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Delivery-Charge:</th>
+                  <td>$ <span id="delivery-charge">20.00</span></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Total-Tax:</th>
+                  <td>$ <span id="total-tax">00.00</span></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Total</th>
+                  <td colspan="2">$ <span id="total">00.00</span></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="parces text-center py-4">
+              <button class="btn btn-primary text-center">Buy Now</button>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
-  </header>
+    </main>
+    <!-- footer  -->
+    <footer class="max-w-screen-2xl mx-auto my-12 text-center">
+      Made by ❤ S.M.Abtahi Noor
+    </footer>
 
-  <!-- main body  -->
-  <main class="max-w-screen-2xl mx-auto px-12 my-12">
-    <!-- search input  -->
-
-    <!-- products area and my cart -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
-      <!-- products  -->
-      <div class="col-span-3">
-        <div id="all-products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
-      </div>
-
-      <!-- cart  -->
-      <div class="col-span-1">
-        <div class="cart" id="my-cart">
-          <table class="table">
-            <thead>
-              <h1 class="text-lg text-center font-semibold py-3">My-Cart</h1>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Total Added-Products:</th>
-                <td><span id="total-Products">0</span></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Price:</th>
-                <td>$ <span id="price">00.00</span></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Delivery-Charge:</th>
-                <td>$ <span id="delivery-charge">20.00</span></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Total-Tax:</th>
-                <td>$ <span id="total-tax">00.00</span></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">Total</th>
-                <td colspan="2">$ <span id="total">00.00</span></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="parces text-center py-4">
-            <button class="btn btn-primary text-center">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <!-- footer  -->
-  <footer class="max-w-screen-2xl mx-auto my-12 text-center">Made by ❤ S.M.Abtahi Noor</footer>
-
-  <!-- add javascript  file  -->
-  <script src="./js/app.js"></script>
-</body>
-
+    <!-- add javascript  file  -->
+    <script src="./js/app.js"></script>
+  </body>
 </html>
